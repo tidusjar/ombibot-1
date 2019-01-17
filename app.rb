@@ -1,3 +1,4 @@
+require "dotenv/load"
 require "slack-ruby-bot"
 
 class OmbiBot < SlackRubyBot::Bot
