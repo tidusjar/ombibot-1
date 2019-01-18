@@ -2,6 +2,8 @@
 
 > A bot to ombi with
 
+![](ombibot.gif)
+
 ## Prerequisites
 
 1. Ruby >= 1.9.3
