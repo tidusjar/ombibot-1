@@ -17,6 +17,15 @@ $ bundle install
 
 ## Running
 
+1. Replace environment variables
+
 ```
-bundle exec foreman start
+- create a file in the root called `.env`
+- copy from `.env.example` and replace with your values
+```
+
+2. Start the server
+
+```
+$ bundle exec foreman start
 ```
