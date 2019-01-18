@@ -43,9 +43,16 @@ GEM
     gli (2.18.0)
     hashdiff (0.3.8)
     hashie (3.6.0)
+    httparty (0.16.3)
+      mime-types (~> 3.0)
+      multi_xml (>= 0.5.2)
     i18n (1.5.2)
       concurrent-ruby (~> 1.0)
+    mime-types (3.2.2)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2018.0812)
     minitest (5.11.3)
+    multi_xml (0.6.0)
     multipart-post (2.0.0)
     mustermann (1.0.3)
     nio4r (2.3.1)
@@ -108,6 +115,7 @@ DEPENDENCIES
   celluloid-io
   dotenv
   foreman
+  httparty
   puma
   rack-test
   rake
