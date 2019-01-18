@@ -59,6 +59,8 @@ Command Structure:
 - `command` - one of "download" or "find" or "search" or "get" or "request"
 - `expression` - the movie you're searching for (TV support coming soon.)
 
+You can also send DMs to the bot, for your more embarassing requests. The DMs don't require the trigger word.
+
 ## Built With:
 
 [Slack Ruby Bot](https://github.com/dblock/slack-ruby-bot)
