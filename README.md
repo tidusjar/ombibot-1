@@ -29,3 +29,7 @@ $ bundle install
 ```
 $ bundle exec foreman start
 ```
+
+## Built With:
+
+[Slack Ruby Bot](https://github.com/dblock/slack-ruby-bot)
