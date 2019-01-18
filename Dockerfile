@@ -5,6 +5,7 @@ RUN mkdir /usr/app
 WORKDIR /usr/app
 COPY Gemfile /usr/app/
 COPY Gemfile.lock /usr/app/
+RUN gem install bundler
 RUN bundle install
 COPY . /usr/app
 CMD ["bundle", "exec", "foreman", "start"]
