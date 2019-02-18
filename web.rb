@@ -4,6 +4,7 @@ require "httparty"
 
 OMBI_URL = ENV["OMBI_URL"]
 OMBI_API_KEY = ENV["OMBI_API_KEY"]
+OMBI_USER = ENV["OMBI_USER"]
 
 module OmbiBot
   class Web < Sinatra::Base
@@ -21,7 +22,7 @@ module OmbiBot
           }.to_json
           res = HTTParty.post(
             "#{OMBI_URL}/api/v1/Request/movie",
-            headers: {"ApiKey" => OMBI_API_KEY, "Content-Type" => "application/json"},
+            headers: {"ApiKey" => OMBI_API_KEY, "UserName" => OMBI_USER, "Content-Type" => "application/json"},
             body: body,
           )
           return res.parsed_response["message"]
