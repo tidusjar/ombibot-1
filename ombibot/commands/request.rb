@@ -14,6 +14,7 @@ module OmbiBot
           {
             headers: {
               "ApiKey" => OMBI_API_KEY,
+              "UserName" => "ApiBasic",
             },
           }
         ).body)
