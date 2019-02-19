@@ -11,18 +11,47 @@
 
 ## Installation
 
-1. Install dependencies
+1. Install git (varies by platform)
+2. Cone from git
+
+```
+git clone https://github.com/tidusjar/ombibot-1.git
+```
+
+3. Install dependencies
 
 ```
 $ bundle install
 ```
 
-## Running
+## Configure
 
-1. Replace environment variables
+1. Set up Slack bot
 
-   1. create a file in the /config called `.env`
-   1. copy from `.env.example` and replace with your values (leave slack one empty for now)
+   1. [Create a Slack app](https://api.slack.com/apps) and configure it in your workspace
+   2. Add features: Bots, Interactive Components, and Permissions
+       Permissions include:
+        - chat:write:bot
+        - bot
+        - commands
+   3. Collect slack API key for the bot under `OAuth & Permissions` save `Bot User OAuth Access Token` (will be needed later)
+   4. Under `Interactive Components` fill in `Request URL` for the callback URL
+        - This needs to be the address of the system running the bot, on TCP port 4567
+          o in cases where the bot is hosted behind a NAT or router, port 4567 must be forwarded to the system hosting the bot
+          o the address needs to be accessible from the internet, so use your WAN IP
+        - URL can be HTTP (non-secured)
+
+2. Replace environment variables
+
+   1. Copy `.env.example` to `.env`
+   2. Edit `.env` with the Ombi information
+   ```
+   SLACK_API_TOKEN=(copied from Slack bot setup in step 1)
+   OMBI_API_KEY=(copied from the Ombi server, Settings, Ombi, Ombi Configuration, API Key)
+   OMBI_URL=http://ombi_ip_or_fqdn:5000
+   OMBI_USER=apiuser
+   ```
+     Editing the OMBI_USER is optional, but the user _must_ exist in Ombi.
 
 2. Start the server
 
@@ -30,18 +59,31 @@ $ bundle install
 $ bundle exec foreman start
 ```
 
-3. Host it somewhere with an SSL cert (needed for interactions)
+3. The bot should now be accessible in Slack, add it to a channel!
 
-4. Set up Slack bot
+4. ?
 
-   1. [Create a Slack app](https://api.slack.com/apps) and configure it in your workspace
-   2. Add Bots, Interactive Components, and Permissions
-   3. Configure `.env` with `Bot User OAuth Access Token` from `OAuth and Permissions` sidebar tab
-   4. Configure the `Request URL` on `Interactive Components` to the URL from #3 above
+5. Profit!
 
-5. ?
+(optional) Linux auto-start:
 
-6. Profit!
+1. create a script with the following lines:
+```
+#!/bin/bash
+cd /path/to/ombibot
+bundle exec foreman start
+```
+2. add script to statup using /etc/rc.local using screen (before Exit 0):
+```
+su - local_username -c "screen -dm bash -c /pathtoscript/script.sh"
+```
+3. reboot
+
+Note: if there's ever a problem, you can access the bot by logging in as local_username and typing:
+```
+screen -r
+```
+  reboot, or re-run /etc/rc.local as root to restart the bot.
 
 ## How to use:
 
